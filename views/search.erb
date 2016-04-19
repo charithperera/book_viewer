@@ -1,0 +1,17 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>">
+  <button type="submit">Search</button>
+</form>
+
+<div>
+  <ul>
+    <% @results.each do |res| %>
+      <li>
+      <a href = "/chapters/<%= res[:ch_index] + 1 %>#paragraph<%= res[:p_index] %>"><%= res[:title] %></a>
+      <p><%= boldify(params[:query], res[:text]) %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
